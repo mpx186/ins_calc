@@ -4,19 +4,20 @@
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  overflow-x: hidden;
 }
 
 body {
-  overflow-x: hidden;
+  margin-top: 20px;
   width: 100vw;
   position: relative;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ebffed' fill-opacity='0.62'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 div.wrapper {
   display: flex;
   flex-wrap: wrap;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 div.left-side {
@@ -61,7 +62,7 @@ input::placeholder {
 }
 
 input:focus {
-  transform: scale(1.03);
+  transform: scale(1.01);
 }
 
 form input[type="submit"] {
@@ -99,7 +100,6 @@ div.right-container {
   box-shadow: 7px 8px 58px lightgrey;
   border-radius: 5px;
   text-align: center;
-  
 }
 
 table {
@@ -139,7 +139,6 @@ button {
   background-color: rgb(255, 255, 255);
   font-size: 16px;
   font-weight: bold;
-
   border: none;
   transition: 0.2s;
   outline: none;
@@ -157,15 +156,32 @@ div.change-base {
   position: fixed;
   width: 200px;
   height: 150px;
-  background-color: rgb(126, 126, 126);
+  background-color: rgb(13, 95, 172);
   top: 9%;
   left: -180px;
   border-radius: 10px;
   transition: 0.3s ease-in-out;
 }
 
+div.change-base::after {
+  content: "Zmień kwotę bazową";
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  top: 10px;
+  right: 12px;
+  transform-origin: 100%;
+  transform: rotate(-90deg);
+  transition: 0.5s;
+}
+
+div.change-base:hover::after {
+  opacity: 0;
+}
+
 div.change-base:hover {
-  left: -5px;
+  left: -6px;
 }
 
 div.change-base p {
@@ -177,6 +193,7 @@ div.change-base p {
 input#own-base {
   margin: 15px auto;
   width: 70%;
+  transform: scale(1);
 }
 
 button.own {
@@ -186,10 +203,63 @@ button.own {
   height: 40px;
   background-color: white;
   border-color: gray;
+  transform: scale(0.9);
 }
 
 button.own:hover {
   cursor: pointer;
   color: black;
   transform: scale(1);
+}
+
+div.popup {
+  position: fixed;
+  top: 30vh;
+  left: 50vw;
+  padding: 15px;
+  min-height: 50px;
+  background-color: rgb(4, 133, 57);
+  border-radius: 10px;
+  opacity: .8;
+  display: none;
+}
+
+div.popup.active{
+  display: block;
+  top: 30vh;
+  left: 50vw;
+  animation: pop .5s ease-in-out;
+  animation-fill-mode: both; 
+}
+
+div.popup > p {
+  color: #fff;
+  text-align: center;
+  
+  }
+
+  div.popup > p.base {
+  color: #fff;
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 15px;
+  font-weight: bold;
+  }
+
+@keyframes pop {  
+0% {
+    opacity: 0;
+    transform: scale(.1) rotate(30deg) translate(-50%, -50%);
+}
+50% {
+    transform: rotate(-10deg) translate(-50%, -50%);
+    
+}
+70% {
+    transform: rotate(3deg) translate(-50%, -50%);
+}
+100% {
+    opacity: 0.8;
+    transform: scale(1) translate(-50%, -50%);
+}
 }

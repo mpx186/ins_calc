@@ -18,6 +18,7 @@ const reset = document.querySelector("button");
 const bazowa = document.querySelector("#own-base");
 
 const button_base = document.querySelector(".own");
+const button_own = document.querySelector("button.own")
 
 //VARIABLES
 let name = "";
@@ -2255,18 +2256,13 @@ const pkdArray = [
 ];
 
 
-
 //base amount
-
 const setBase = () => {
   stawka_bazowa = bazowa.value*1
 }
 
 
 button_base.addEventListener("click", setBase)
-
-
-
 
 
 const handleClick = e => {
@@ -2315,7 +2311,6 @@ const handleReset = () => {
   date = "";
   wspolczynnik = "";
   final = "";
-
   name_html.value = "";
   surname_html.value = "";
   company_html.value = "";
@@ -2323,3 +2318,21 @@ const handleReset = () => {
 };
 
 reset.addEventListener("click", handleReset);
+
+const ownHide = () => {
+  const div_changeBase = document.querySelector('div.change-base')
+  div_changeBase.style.left = -180+'px';
+  setTimeout(() => { div_changeBase.style.left = '';},500)
+  const popUp = document.querySelector("div.popup");
+  const popUpBase = document.querySelector("div.popup > p.base")
+  popUpBase.textContent = `${stawka_bazowa} zł`;
+  popUp.classList.add("active");
+  setTimeout(()=> {
+    popUp.classList.remove("active")
+  } ,3500)
+}
+
+button_own.addEventListener("click", ownHide)
+
+
+//// classes animated and jackInTheBox
