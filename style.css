@@ -21,7 +21,7 @@ div.wrapper {
 }
 
 div.left-side {
-  flex-grow: 1;
+  flex-grow: 1; 
 }
 
 h1 {
@@ -40,6 +40,7 @@ form {
   padding: 25px;
   box-shadow: 7px 8px 58px lightgrey;
   border-radius: 5px;
+  max-width: 800px;
 }
 
 label {
@@ -263,3 +264,40 @@ div.popup > p {
     transform: scale(1) translate(-50%, -50%);
 }
 }
+
+
+ /* MEDIA QUERIES */
+
+ @media (orientation: portrait) and (max-width: 550px) {
+
+div.right-container {
+  width: 90%;
+  padding: 15px;
+}
+
+table {
+  font-size: 0.9em;
+  letter-spacing: 0.2px;
+}
+
+.odd {
+  padding-left: 15px;
+}
+
+.final {
+  font-size: 1.6em;
+  color: rgb(13, 95, 172);
+}
+
+@keyframes pop {  
+from {
+    transform: translate(-50%, 50%);
+}
+to {
+    transform: translate(-50%, 50%);
+    
+}
+
+}
+
+ }
